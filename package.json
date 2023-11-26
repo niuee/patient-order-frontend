@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest",
     "build": "webpack --config webpack.config.js",
-    "dev": "webpack serve --config webpack.config.js"
+    "dev": "webpack serve --config webpack.config.js",
+    "serve": "node ./dist/staticServer/server/js 5501"
   },
   "author": "",
   "license": "ISC",
