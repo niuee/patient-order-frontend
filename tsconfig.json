@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+      "target": "es6",
+      "module": "es6",
+      "moduleResolution": "node",
+      "sourceMap": true,
+      "outDir": "./dist",
+      "baseUrl": "./src",
+      "experimentalDecorators": true,
+      "allowSyntheticDefaultImports": true,
+      "jsx": "react",
+      "strict": false,
+      "plugins": [{ "name": "typescript-plugin-css-modules" }],
+    },
+    "include": ["src/**/*"],
+    "exclude": ["node_modules", "**/*.spec.ts", "submodules"]
+}
