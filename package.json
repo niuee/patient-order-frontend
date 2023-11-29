@@ -7,7 +7,7 @@
     "test": "jest",
     "build": "webpack --config webpack.config.js",
     "dev": "webpack serve --config webpack.config.js",
-    "serve": "node ./dist/staticServer/server.js 5502"
+    "serve": "node ./dist/staticServer/server.js"
   },
   "author": "",
   "license": "ISC",

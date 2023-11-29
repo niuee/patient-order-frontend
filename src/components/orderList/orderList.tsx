@@ -14,7 +14,8 @@ import EditOrderModal from "../editOrderModal";
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(props,ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
-
+const devUrl = "http://localhost:5501/";
+const demoUrl = "https://vntchang.dev/patientOrderDemo/";
 
 export type Patient = {
     id: string;
@@ -84,7 +85,7 @@ export default function OrderList(orderListProps: OrderListProps){
     const {data, isLoading, isError, refetch} = useQuery({
         queryKey: ['orderForPatient'],
         queryFn: async ()=>{
-            const res = await axios.get(`http://localhost:5501/api/patientOrders/${orderListProps.patientId}`);
+            const res = await axios.get(`${demoUrl}api/patientOrders/${orderListProps.patientId}`);
             const data = res.data as Order[];
             data.forEach((order)=>{
                 order.lastEditDate = new Date(order.lastEditDate);
@@ -107,7 +108,7 @@ export default function OrderList(orderListProps: OrderListProps){
     const mutation = useMutation({
         mutationFn: async (orderBody: {message: string, patientId: string}) =>{
             try{
-                const res = await axios.post("http://localhost:5501/api/order", orderBody);
+                const res = await axios.post(`${demoUrl}/api/order`, orderBody);
                 orderListProps.setAppendFn(false);
                 setInsertNewOrderSuccessSnackbarOpen(true);
                 refetch();
@@ -123,7 +124,7 @@ export default function OrderList(orderListProps: OrderListProps){
     const mutationForOrderEdits = useMutation({
         mutationFn: async (orderBody: {message: string, orderId: string}) =>{
             try{
-                const res = await axios.post("http://localhost:5501/api/order", orderBody);
+                const res = await axios.post(`${demoUrl}/api/order`, orderBody);
                 setShowEditModal(false);
                 setEditOrderSuccessSnackbarOpen(true);
                 setEditModalOrderTextFieldContent("");
